@@ -82,6 +82,45 @@ python app.py
 - Ensure `convert.py` and `app.py` are in the same directory.
 - Run the GUI script using Python.
 
+## Creating Executables
+
+You can create standalone executables for both Windows (`.exe`) and macOS (`.app`) platforms.
+
+### Windows: Create `.exe`
+1. Install `PyInstaller`:
+   ```bash
+   pip install pyinstaller
+   ```
+2. Create the executable:
+   ```bash
+   pyinstaller --onefile --windowed app.py
+   ```
+   - `--onefile`: Combines all dependencies into a single file.
+   - `--windowed`: Hides the console window (useful for GUI apps).
+3. The `.exe` file will be available in the `dist` directory.
+
+### macOS: Create `.app`
+1. Install `PyInstaller`:
+   ```bash
+   pip install pyinstaller
+   ```
+2. Create the application bundle:
+   ```bash
+   pyinstaller --onefile --windowed app.py
+   ```
+3. The `.app` file will be available in the `dist` directory.
+
+#### Note on macOS Distribution
+If you want to distribute the `.app` file, you may need to sign and notarize it to avoid issues with macOS Gatekeeper:
+- **Sign the application:**
+  ```bash
+  codesign --deep --force --verify --verbose --sign "Developer ID Application: Your Name (Team ID)" dist/app.app
+  ```
+- **Notarize the application:**
+  ```bash
+  xcrun altool --notarize-app --primary-bundle-id "com.example.app" --username "your_email" --password "your_password" --file dist/app.app
+  ```
+
 ## Error Handling
 For both CLI and GUI, appropriate error messages will be displayed for common issues, such as:
 - Missing input file.
