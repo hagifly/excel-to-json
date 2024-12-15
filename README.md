@@ -74,5 +74,6 @@ If an error occurs during conversion, an appropriate error message will be displ
 - Missing required Python libraries.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is open-source and free to use.
+
 
